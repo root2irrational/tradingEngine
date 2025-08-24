@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'tradingEngine'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = '17'
+
+mainClassName = 'app.App'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // --- Web / HTTP client ---
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+
+    // --- JSON parsing ---
+    implementation platform("com.fasterxml.jackson:jackson-bom:2.17.2")
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "com.fasterxml.jackson.core:jackson-core"
+    implementation "com.fasterxml.jackson.core:jackson-annotations"
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // --- CSV / Excel parsing (for market data) ---
+    implementation 'org.apache.commons:commons-csv:1.10.0'
+    implementation 'org.apache.poi:poi:5.2.3'
+    implementation 'org.apache.poi:poi-ooxml:5.2.3'
+
+    // --- Database (if you want to store historical data) ---
+    implementation 'org.xerial:sqlite-jdbc:3.42.0.0'
+    // or for MySQL/PostgreSQL:
+    // implementation 'mysql:mysql-connector-java:8.1.0'
+    // implementation 'org.postgresql:postgresql:42.7.6'
+
+    // --- Logging ---
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'ch.qos.logback:logback-classic:1.4.11'
+
+    // --- Optional GUI (if you want a desktop app) ---
+    // implementation 'org.openjfx:javafx-controls:20.0.2'
+
+    // --- Testing ---
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+test {
+    useJUnitPlatform()
+}
